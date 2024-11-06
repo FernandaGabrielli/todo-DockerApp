@@ -1,0 +1,22 @@
+name: Security Analysis
+
+on: 
+  push:
+    branches: 
+      -main
+pull_request: 
+  branches:
+    -main
+
+jobs: 
+  grype:
+    name: Grype
+    runs-on: ubuntu-latest
+    steps:
+      -name: Checkout source code
+      uses: actions/checkout@v4
+      -name: Scan current project
+      uses: anchore/scan-action@v3
+      id: scan
+      with:
+      
